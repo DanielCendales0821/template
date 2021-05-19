@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoadingService } from './config/services/loading/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'template-boopstrap';
+  constructor(readonly loading: LoadingService) {
+    this.loading.showSpinner();
+    setTimeout(() => {
+      this.loading.closeSpinner();
+    }, 3000);
+  }
 }
